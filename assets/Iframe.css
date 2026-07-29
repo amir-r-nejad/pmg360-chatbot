@@ -1,0 +1,406 @@
+@import "@fontsource/poppins";
+
+:root {
+    --banner-rectangle-adjustment: 20px;
+    --banner-rectangle-padding: 10px;
+}
+
+@media print {
+    /* Hide the print button when printing */
+    .header-button,
+    .info-button,
+    .insights-button,
+    .feedback {
+        display: none !important;
+    }
+
+    /* Always show the insights description when printing */
+    .insights-description {
+        display: block !important;
+    }
+}
+
+/* 
+  Add a 5mm margin when printing (react-to-print has no margin by default).
+  Solution adapted from here: https://github.com/MatthewHerbst/react-to-print/issues/29#issuecomment-872004022
+*/
+@page {
+    margin: 5mm !important;
+}
+
+/* Apply this class element with the 'row' class to remove the padding on the x-axis */
+.scoped-bootstrap .row.no-padding > * {
+    padding: 0;
+}
+
+.scoped-bootstrap .row .insights {
+    margin-left: 0;
+}
+
+.product-row {
+    display: flex;
+    gap: 4px;
+    text-align: left;
+}
+
+h1.iframe-heading,
+h2.iframe-heading,
+h3.iframe-heading,
+h4.iframe-heading,
+h5.iframe-heading {
+  font-family: 'Poppins', sans-serif;
+}
+
+.link, .link:visited, .link:hover {
+    text-decoration: underline;
+}
+.link, .link:visited {
+  color: #00263A!important;
+}
+.link:hover {
+  color: #3A8DDE!important;
+}
+
+.btn {
+  background: #00263A!important;
+}
+.btn:hover {
+  background: #3A8DDE!important;
+}
+
+.iframe {
+    background: white;
+    /* margin: 1% auto; */
+    margin: 0px;
+    padding: 0px;
+    /* box-shadow: #dadada 5px 5px 0px; */
+    max-width: 980px;
+}
+
+.iframe .widget {
+    border: 2px solid #C6DBF5;
+    margin: 10px;
+    /* margin-bottom: 30px; */
+    padding: 0px;
+    border-radius: 0.625rem;
+    min-height: 250px;
+    position: relative;
+
+    break-inside: avoid;
+}
+
+.iframe .widget.header {
+    min-height: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    border: 0;
+}
+
+.iframe .widget.borderless {
+    border: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.iframe .widget h2 {
+    font-size: 16px;
+    color: #0054B7;
+    text-align: center;
+}
+.iframe .widget .text-left-override {
+    text-align: left;
+}
+.iframe .widget .circle-member-segment {
+    font-weight: bold;
+    font-size: 38px;
+    margin: 0;
+    color: #3F85D6;
+    position: relative;
+}
+
+.iframe .widget strong {
+    color: #0054B7;
+}
+
+.master strong {
+    color: #fff!important;
+}
+
+.iframe .widget .banner {
+    background-image: linear-gradient(to right, #3F85D6, #FFFFFF);
+    color: white;
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    align-self: center;
+    height: 80px;
+    padding: var(--banner-rectangle-padding);
+
+    /* Adjusts the rectangular part of the header so that it fits snugly with the circle */
+    position: relative;
+    right: var(--banner-rectangle-adjustment);
+}
+
+.banner-button-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    /* 
+    Align the buttons to the right side of the header (need to do this because of the
+    adjustment that was made to force the rectangle to fit snugly with the circle)
+  */
+    position: relative;
+    left: calc(var(--banner-rectangle-adjustment) + var(--banner-rectangle-padding));
+}
+
+.iframe .widget .subtitle {
+    color: #0054B7;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+.iframe .widget .subtitle.margin-override {
+    margin: 0;
+}
+
+.iframe .widget .banner h2 {
+    color: white;
+    text-align: left;
+    width: fit-content;
+    display: inline-block;
+}
+.iframe .widget .banner h6 {
+    color: white;
+    text-align: left;
+    width: fit-content;
+    display: inline-block;
+}
+@media screen and (max-width: 490px) {
+    .iframe .widget .banner h2 {
+        font-size: 13px;
+    }
+    .iframe .widget .banner h6 {
+        font-size: 12px;
+    }
+}
+@media screen and (max-width: 460px) {
+    .iframe .widget .banner h2 {
+        width: 60%;
+    }
+    .iframe .widget .banner h6 {
+        width: 60%;
+    }
+}
+
+.iframe .widget h5 {
+    color: #0054B7;
+    font-size: 16px;
+}
+
+.iframe .widget .inner {
+    padding: 10px;
+}
+
+.iframe .widget .slider {
+    position: relative;
+    width: 100%;
+    height: 20px;
+    display: inline-block;
+    background: linear-gradient(to right, #FF0000, #FFCC00, #00FF00);
+    border-radius: 10px;
+    margin: 8px;
+    margin-right: 18px;
+    margin-left: 18px;
+}
+
+.iframe .widget .slider .middle {
+    position: absolute;
+    z-index: 2;
+    text-align: center;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+}
+.iframe .widget .slider .l1 {
+    position: absolute;
+    z-index: 2;
+    text-align: center;
+    left: 0%;
+    top: 100%;
+}
+.iframe .widget .slider .l2 {
+    position: absolute;
+    z-index: 2;
+    text-align: center;
+    top: 100%;
+    right: 0%;
+}
+.iframe .widget .slider .bullet {
+    background: white;
+    border: 2px solid #0054B7;
+    border-radius: 30px;
+    margin-top: -3px;
+    margin-left: -10px;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 0px;
+    z-index: 2;
+}
+
+.iframe .widget .member-segment .subtitle {
+    /* width: 70%; */
+    display: inline-block;
+}
+
+.timestamp {
+    text-align: right;
+    float: right;
+    width: 100%;
+    display: inline-block;
+    font-size: 1em;
+    font-weight: 500;
+    font-style: italic;
+    margin-right: 10px;
+}
+
+.iframe .widget .member-segment small {
+    margin-top: -5px;
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+.iframe .widget .member-segment .bullet {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    overflow: hidden;
+    border-radius: 20px;
+    border: 1px solid #3881D5;
+    text-align: left;
+}
+
+.iframe .widget .member-segment .fill {
+    width: auto;
+    height: 100%;
+    background: #3881D5;
+}
+
+.iframe .widget .member-segment.EM1 .bullet,
+.iframe .widget .member-segment.EM2 .bullet {
+    border-color: #AAAAAA;
+}
+
+.iframe .widget .member-segment.EM1 .fill,
+.iframe .widget .member-segment.EM2 .fill {
+    background-color: #AAAAAA;
+}
+
+.iframe .widget .member-segment.D1 .bullet,
+.iframe .widget .member-segment.D2 .bullet,
+.iframe .widget .member-segment.D3 .bullet {
+    border-color: #4A812D;
+}
+.iframe .widget .member-segment.D1 .fill,
+.iframe .widget .member-segment.D2 .fill,
+.iframe .widget .member-segment.D3 .fill {
+    background-color: #4A812D;
+}
+.iframe .widget .member-segment.E1 .bullet,
+.iframe .widget .member-segment.E2 .bullet,
+.iframe .widget .member-segment.E3 .bullet {
+    border-color: #297065;
+}
+.iframe .widget .member-segment.E1 .fill,
+.iframe .widget .member-segment.E2 .fill,
+.iframe .widget .member-segment.E3 .fill {
+    background-color: #297065;
+}
+.iframe .widget .member-segment.T1 .bullet,
+.iframe .widget .member-segment.T2 .bullet,
+.iframe .widget .member-segment.T3 .bullet {
+    border-color: #1D90C0;
+}
+.iframe .widget .member-segment.T1 .fill,
+.iframe .widget .member-segment.T2 .fill,
+.iframe .widget .member-segment.T3 .fill {
+    background-color: #1D90C0;
+}
+.iframe .widget .member-segment.M1 .bullet,
+.iframe .widget .member-segment.M2 .bullet {
+    border-color: #2460A6;
+}
+.iframe .widget .member-segment.M1 .fill,
+.iframe .widget .member-segment.M2 .fill {
+    background-color: #2460A6;
+}
+.iframe .widget .member-segment.R1 .bullet,
+.iframe .widget .member-segment.R2 .bullet {
+    border-color: #042131;
+}
+.iframe .widget .member-segment.R1 .fill,
+.iframe .widget .member-segment.R2 .fill {
+    background-color: #042131;
+}
+
+.iframe .score {color: inherit; }
+.iframe .score.yellow {color: #FFCC00; }
+.iframe .score.red {color: #FF0000; }
+.iframe .score.green {color: #00FF00; }
+
+.iframe .warning {
+    background: #FFCC00;
+    margin: 10px;
+    margin-bottom: -10px;
+    padding: 10px;
+    font-size: small;
+    text-align: center;
+    font-weight: bold;
+    display: none;
+}
+
+ul > li {
+    list-style: disc;
+    list-style-position: inside;
+}
+.scoped-bootstrap .product-summary-and-opportunities-list {
+    padding-left: 1rem;
+}
+.product-summary-and-opportunities-list > li {
+    margin-bottom: 0.25rem;
+}
+
+ol > li {
+    list-style: decimal;
+}
+
+.feedback {
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    width: auto;
+    display: flex;
+}
+.product-summary-and-opportunities-content .feedback {
+    position: relative;
+    top: 0px;
+    right: 0px;
+}
+.feedback > div {
+    position: relative;
+    margin: 2px;
+    cursor: pointer;
+    opacity: .25;
+}
+.feedback > div.active {
+    opacity: 1;
+}
+.feedback-button {
+    color: #262626;
+}
+.feedback-button:hover {
+    color: black;
+}
