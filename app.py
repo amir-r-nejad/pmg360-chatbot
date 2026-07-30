@@ -338,7 +338,7 @@ def render_header() -> None:
                 <img src="data:image/png;base64,{trajectory_b64}" width="26" alt="trajectory" />
             </div></div>
             <div class="banner master">
-                <div class="relative left-5 self-center">
+                <div class="self-center" style="position:relative; left:20px;">
                     <h6 class="font-bold iframe-heading"><strong>{MEMBER_SEGMENT_TITLE}</strong> <span class="info-button">&#9432;</span></h6>
                     <h6 class="font-bold iframe-heading">Member for {TENURE_YEARS} year(s) <span class="info-button">&#9432;</span></h6>
                 </div>
