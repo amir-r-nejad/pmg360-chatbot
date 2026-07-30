@@ -311,13 +311,13 @@ def _gauge_color(value: float, low: float, high: float) -> str:
     return "#ffb400"
 
 
-def _gauge_block(heading_html: str, value: float, low: float, high: float, percent: float, left_label: str, right_label: str, left_caption: str, right_caption: str) -> str:
+def _gauge_block(heading_html: str, value: float, low: float, high: float, percent: float, left_label: str, right_label: str, left_caption: str, right_caption: str, suffix: str = "") -> str:
     color = _gauge_color(value, low, high)
     percent = max(0, min(100, percent))
     return f"""
     <h6 class="subtitle iframe-heading py-1 mb-0">{heading_html}</h6>
     <div class="graphic">
-        <div class="middle bold"><span><big style="color:{color}; font-weight:bold;">{value:g}</big></span></div>
+        <div style="text-align:center;"><big style="color:{color}; font-weight:bold; font-size:1.5rem;">{value:g}{suffix}</big></div>
         <div class="pmg-gauge-axis-row">
             <span class="axis-label">{left_label}</span>
             <div class="slider"><div class="bullet" style="left:{percent}%"></div></div>
@@ -353,14 +353,14 @@ def render_header() -> None:
 
 def render_retention_card() -> None:
     retention_icon = f'<img class="w-10 h-10 mr-1" src="data:image/png;base64,{RET_SCORE_ICON_B64}" alt="retention score" style="width:32px; display:inline-block; vertical-align:middle;" />'
-    heading1 = f'{retention_icon}Retention Score <span class="info-button">&#9432;</span> <span class="feedback">&#128077;&#128078;</span>'
+    heading1 = f'{retention_icon}Retention Score <span class="info-button">&#9432;</span>'
     gauge1 = _gauge_block(heading1, MEMBER["retention_score"], -20, 20, MEMBER["retention_score"] + 50, "-50", "+50", "Likely at risk", "Very low risk")
 
     heading2 = 'Engagement Score <span class="info-button">&#9432;</span>'
     gauge2 = _gauge_block(heading2, MEMBER["engagement_score"], -25, 25, MEMBER["engagement_score"] + 50, "-50", "+50", "Disengaged", "Engaged")
 
     heading3 = 'Member Lifetime Value <span class="info-button">&#9432;</span>'
-    gauge3 = _gauge_block(heading3, MEMBER["clv_percent_for_segment"], 25, 75, MEMBER["clv_percent_for_segment"], "0%", "100%", "Low", "High")
+    gauge3 = _gauge_block(heading3, MEMBER["clv_percent_for_segment"], 25, 75, MEMBER["clv_percent_for_segment"], "0%", "100%", "Low", "High", suffix="%")
 
     render_html(f"""
     <div class="iframe"><div class="widget"><div class="flex flex-col text-center p-[10px]">
