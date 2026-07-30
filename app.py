@@ -334,8 +334,8 @@ def render_header() -> None:
     <div class="iframe"><div class="widget header">
         <div class="pmg-header-row">
             <div class="pmg-segment-circle"><div class="pmg-segment-circle-inner">
-                <h6 class="circle-member-segment">{MEMBER_SEGMENT}</h6>
-                <img src="data:image/png;base64,{trajectory_b64}" width="26" alt="trajectory" />
+                <h6 class="circle-member-segment" style="margin:0; line-height:1;">{MEMBER_SEGMENT}</h6>
+                <img src="data:image/png;base64,{trajectory_b64}" width="26" style="display:block;" alt="trajectory" />
             </div></div>
             <div class="banner master">
                 <div class="self-center" style="position:relative; left:20px;">
