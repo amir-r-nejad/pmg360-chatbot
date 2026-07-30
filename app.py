@@ -189,7 +189,7 @@ MEMBER = {
     "tenure": TENURE_YEARS,
     "trajectory_segment": TRAJECTORY,
     "retention_score": 12.5,
-    "engagement_score": 61,
+    "engagement_score": 50,
     "clv_percent_for_segment": 62,
     "wallet_share": WALLET_SHARE,
     "wealth_opportunity_score": 70,
