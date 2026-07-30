@@ -246,6 +246,10 @@ def stream_reply(member_row: dict, history: list[dict], message: str, provider: 
         # reasoning, and adaptive thinking (on by default) adds several seconds of latency here.
         model_kwargs["thinking"] = {"type": "disabled"}
         model_kwargs["effort"] = "low"
+        # Without an explicit timeout, a stalled connection (seen on Streamlit Community Cloud)
+        # falls back to the SDK's 10-minute default and the UI just spins on "Thinking...". Fail
+        # fast instead so the error surfaces in the chat instead of an indefinite hang.
+        model_kwargs["timeout"] = 45
 
     chat_model = init_chat_model(model_name, model_provider=provider, **model_kwargs)
     messages = [{"role": "system", "content": build_system_prompt(member_row)}]
